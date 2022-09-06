@@ -2,6 +2,6 @@
 
 Реализация классической карточной игры - пасьянс косынка.
 
-[Тык](bibletoon.github.io/Solitaire/Source)
+[Тык](https://bibletoon.github.io/Solitaire/Source)
 
 Автор работы: **Иванов Александр, M33001**
