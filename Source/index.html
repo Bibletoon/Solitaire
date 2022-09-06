@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="solitaire, солитёр, косынка, пасьянс" />
+    <link href="http://fonts.cdnfonts.com/css/choco-cooky" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <title>Solitaire</title>
 </head>
@@ -9,7 +14,7 @@
     <nav class="navbar">
         <a class="navbar__brand">
             <img src="https://cdn-icons-png.flaticon.com/512/1687/1687631.png" alt="" class="navbar__icon">
-            Solitaire
+            <span class="navbar__title">Solitaire</span>
         </a>
         <a class="navbar__profile">
             <img src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png" alt="" class="navbar__avatar">
@@ -17,7 +22,7 @@
         </a>
     </nav>
 
-    <section class="container">
+    <div class="container">
         <div class="board">
             <div class="board__row row">
                 <div class="board__deck row">
@@ -52,11 +57,15 @@
                 <div class="game-info__item">Ходы: 125</div>
             </div>
             <div class="game-info__buttons">
-                <button>Начать сначала</button>
-                <button>Начать сначала</button>
-                <button>Начать сначала</button>
+                <button class="game-info__button btn">
+                    <span class="btn__text">
+                        Начать сначала
+                    </span>
+                </button>
+                <button class="game-info__button btn">Новая игра</button>
+                <button class="game-info__button btn">Правила</button>
             </div>
         </div>
-    </section>
+    </div>
 </body>
 </html>
