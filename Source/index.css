@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10px;
+    font-size: 20px;
+    background-color: aliceblue;
+    border-bottom: lightgray solid 1px;
+}
+
+.navbar__brand {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar__icon {
+    max-width: 32px;
+    max-height: 32px;
+    padding: 0 5px;
+}
+
+.navbar__profile {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar__profile:hover {
+    color: teal;
+}
+
+.navbar__avatar {
+    max-width: 24px;
+    max-height: 24px;
+    padding: 0 5px;
+}
+
+.container {
+    display: flex;
+    padding: 20px calc(50% - 620px) 0;
+}
+
+.board {
+    width: 770px;
+}
+
+/* TODO : Remove */
+.card {
+    margin: 5px;
+    background-size: 100px 125px;
+    width: 100px;
+    height: 125px;
+    background-image: url("https://en-academic.com/pictures/enwiki/80/Playing_card_heart_A.svg");
+}
+
+.board__row {
+    justify-content: space-between;
+}
+
+.board__layout {
+    justify-content: space-evenly;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.card__stack div:not(:first-child) {
+    margin-top: -95px;
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+}
+
+.game-info {
+    background-color: #f9f9f9;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 22px;
+}
+
+.game-info__buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.game-info__buttons button {
+    margin: 2px 0;
+}
