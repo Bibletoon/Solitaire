@@ -1,0 +1,19 @@
+.board {
+    width: 770px;
+}
+
+.board__row {
+    justify-content: space-between;
+}
+
+.board__layout {
+    justify-content: space-evenly;
+}
+
+.board__deck {
+
+}
+
+.board__foundations {
+
+}

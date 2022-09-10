@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 20px calc(50% - 385px) 0;
+}
+
+@media (min-width:1080px) {
+    .container {
+        flex-direction: row;
+        padding: 20px calc(50% - 620px) 0;
+    }
+}

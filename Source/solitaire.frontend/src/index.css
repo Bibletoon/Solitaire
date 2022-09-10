@@ -2,3 +2,25 @@
   margin: 0;
   padding: 0;
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  border-radius: 7px;
+  border: lightgray 1px solid;
+  font-size: 16px;
+  padding: 5px 7px;
+}
+
+.btn:hover {
+  cursor: pointer;
+  opacity: 0.85;
+}
