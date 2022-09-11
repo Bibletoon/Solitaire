@@ -1,0 +1,44 @@
+.navbar {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    font-size: 20px;
+    background-color: aliceblue;
+    border-bottom: lightgray solid 1px;
+}
+
+.navbar__brand {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar__icon {
+    max-width: 32px;
+    max-height: 32px;
+    padding: 0 5px;
+}
+
+.navbar__profile {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar__profile:hover {
+    color: teal;
+}
+
+.navbar__avatar {
+    max-width: 24px;
+    max-height: 24px;
+    padding: 0 5px;
+}
+
+.navbar__title {
+    font-family: 'Choco cooky', sans-serif;
+    font-size: 30px;
+}
