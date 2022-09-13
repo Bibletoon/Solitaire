@@ -1,7 +1,28 @@
 .card {
     background-color: white;
     color: red;
-    height: 128px;
-    font-size: 134px;
-    line-height: 128px;
+    height: 78px;
+    font-size: 82px;
+    line-height: 78px;
+}
+
+@media (min-width: 635px) {
+    .card {
+        background-color: white;
+        color: red;
+        height: 128px;
+        font-size: 134px;
+        line-height: 128px;
+    }
+}
+
+
+@media (min-width: 1300px) {
+    .card {
+        background-color: white;
+        color: red;
+        height: 158px;
+        font-size: 168px;
+        line-height: 158px;
+    }
 }
