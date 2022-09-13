@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './CardComponent.module.css';
+import Card from "../../models/Card";
 
-const CardComponent = () => {
+
+interface CardComponentProps {
+    card : Card
+}
+
+const CardComponent = ({card} : CardComponentProps) => {
     return (
-        <div className={styles.card} draggable="true"></div>
+        <div draggable={true} className={styles.card}>{card.toChar()}</div>
     );
 };
 
