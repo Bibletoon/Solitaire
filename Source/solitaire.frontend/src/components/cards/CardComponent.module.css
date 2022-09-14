@@ -1,8 +1,31 @@
-/* TODO : Remove */
 .card {
-    margin: 5px;
-    background-size: 100px 125px;
-    width: 100px;
-    height: 125px;
-    background-image: url("https://en-academic.com/pictures/enwiki/80/Playing_card_heart_A.svg");
+    background-color: white;
+    height: 78px;
+    font-size: 82px;
+    line-height: 78px;
+}
+
+.red {
+    color: red;
+}
+
+.black {
+    color: black;
+}
+
+@media (min-width: 635px) {
+    .card {
+        height: 128px;
+        font-size: 134px;
+        line-height: 128px;
+    }
+}
+
+
+@media (min-width: 1300px) {
+    .card {
+        height: 158px;
+        font-size: 168px;
+        line-height: 158px;
+    }
 }

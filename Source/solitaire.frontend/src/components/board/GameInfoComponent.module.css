@@ -1,11 +1,21 @@
 .gameInfo {
     background-color: #f9f9f9;
     width: 100%;
-    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-size: 22px;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+@media (min-width: 635px) {
+    .gameInfo {
+        font-size: 22px;
+    }
+}
+
+.gameInfo * {
+    margin: 5px;
 }
 
 .gameInfo__buttons {

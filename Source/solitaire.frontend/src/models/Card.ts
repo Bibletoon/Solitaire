@@ -2,6 +2,8 @@ import Suit from "./Suit";
 import CardValue from "./CardValue";
 
 class Card {
+    readonly baseCharCode : number = 127137;
+
     suit: Suit;
     value: CardValue;
 
@@ -9,6 +11,10 @@ class Card {
         this.suit = suit;
         this.value = value;
     }
+
+     toChar() : string {
+        return String.fromCodePoint(this.baseCharCode + this.suit*16+this.value);
+     }
 }
 
 
