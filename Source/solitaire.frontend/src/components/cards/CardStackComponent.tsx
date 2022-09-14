@@ -12,7 +12,7 @@ const CardStackComponent = ({cards} : CardStackProps) => {
         <div className={[styles.card__stack, "column"].join(" ")}>
             {
                 cards.map(c =>
-                        <CardComponent card={c}/>
+                        <CardComponent card={c} hidden={c !== cards[cards.length - 1]}/>
                     )
             }
         </div>
