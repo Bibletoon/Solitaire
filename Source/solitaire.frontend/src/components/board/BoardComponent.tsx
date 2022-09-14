@@ -30,7 +30,7 @@ const BoardComponent : FC = () => {
                         new Card(Suit.Heart, CardValue.ace),
                         new Card(Suit.Heart, CardValue.ace)
                     ]} />
-                <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
+                <CardStackComponent cards={[]}/>
                 <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
                 <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
                 <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
