@@ -5,7 +5,8 @@
     align-items: center;
     padding: 20px 20px;
     font-size: 20px;
-    background-color: aliceblue;
+    color: white;
+    background-color: #1976d2;
     border-bottom: lightgray solid 1px;
 }
 
@@ -29,7 +30,7 @@
 }
 
 .navbar__profile:hover {
-    color: teal;
+    color: #f4f4f4;
 }
 
 .navbar__avatar {
