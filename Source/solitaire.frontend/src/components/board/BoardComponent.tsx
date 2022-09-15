@@ -11,14 +11,14 @@ const BoardComponent : FC = () => {
         <div className={styles.board}>
             <div className={[styles.board__row, "row"].join(" ")}>
                 <div className={[styles.board__deck, "row"].join(" ")}>
-                    <CardComponent card={new Card(Suit.Heart, CardValue.ace)}/>
-                    <CardComponent card={new Card(Suit.Heart, CardValue.ace)}/>
+                    <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
+                    <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
                 </div>
                 <div className={[styles.board__foundations, "row"].join(" ")}>
-                    <CardComponent card={new Card(Suit.Heart, CardValue.ace)}/>
-                    <CardComponent card={new Card(Suit.Heart, CardValue.ace)}/>
-                    <CardComponent card={new Card(Suit.Heart, CardValue.ace)}/>
-                    <CardComponent card={new Card(Suit.Heart, CardValue.ace)}/>
+                    <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
+                    <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
+                    <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
+                    <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
                 </div>
             </div>
             <div className={[styles.board__layout, "row"].join(" ")}>
@@ -30,12 +30,12 @@ const BoardComponent : FC = () => {
                         new Card(Suit.Heart, CardValue.ace),
                         new Card(Suit.Heart, CardValue.ace)
                     ]} />
-                <CardComponent card={new Card(Suit.Heart, CardValue.ace)}/>
-                <CardComponent card={new Card(Suit.Heart, CardValue.ace)}/>
-                <CardComponent card={new Card(Suit.Heart, CardValue.ace)}/>
-                <CardComponent card={new Card(Suit.Heart, CardValue.ace)}/>
-                <CardComponent card={new Card(Suit.Heart, CardValue.ace)}/>
-                <CardComponent card={new Card(Suit.Heart, CardValue.ace)}/>
+                <CardStackComponent cards={[]}/>
+                <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
+                <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
+                <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
+                <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
+                <CardComponent card={new Card(Suit.Heart, CardValue.ace)} hidden={false}/>
             </div>
         </div>
     );
