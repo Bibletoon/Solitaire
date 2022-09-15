@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "./GameInfoComponent.module.css";
+import {Button} from "@mui/material";
 
 const GameInfoComponent = () => {
     return (
@@ -9,13 +10,11 @@ const GameInfoComponent = () => {
                 <div className={styles.gameInfo__item}>Ходы: 125</div>
             </div>
             <div className={styles.gameInfo__buttons}>
-                <button className={[styles.gameInfo__buttons, "btn"].join(" ")}>
-                    <span className="btn__text">
+                <Button variant="contained">
                         Начать сначала
-                    </span>
-                </button>
-                <button className={[styles.gameInfo__buttons, "btn"].join(" ")}>Новая игра</button>
-                <button className={[styles.gameInfo__buttons, "btn"].join(" ")}>Правила</button>
+                </Button>
+                <Button variant="contained">Новая игра</Button>
+                <Button variant="contained">Правила</Button>
             </div>
         </div>
     );
