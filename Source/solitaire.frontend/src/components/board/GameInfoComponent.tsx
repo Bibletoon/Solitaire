@@ -10,9 +10,7 @@ const GameInfoComponent = () => {
                 <div className={styles.gameInfo__item}>Ходы: 125</div>
             </div>
             <div className={styles.gameInfo__buttons}>
-                <Button variant="contained">
-                        Начать сначала
-                </Button>
+                <Button variant="contained">Начать сначала</Button>
                 <Button variant="contained">Новая игра</Button>
                 <Button variant="contained">Правила</Button>
             </div>

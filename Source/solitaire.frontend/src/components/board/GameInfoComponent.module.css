@@ -23,6 +23,10 @@
     flex-direction: column;
 }
 
+.gameInfo__buttons button {
+    margin-bottom: 5px;
+}
+
 .gameInfo__stats {
 }
 
