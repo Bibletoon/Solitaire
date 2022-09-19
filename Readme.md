@@ -1,7 +1,13 @@
 # Solitaire
 
-Реализация классической карточной игры - пасьянс косынка.
+![TypeScript](https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=for-the-badge)
+![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=for-the-badge)
+![MUI](https://img.shields.io/badge/-MUI-007fff?logo=mui&logoColor=fff&style=for-the-badge)
 
-[Тык](https://bibletoon.github.io/Solitaire/Source)
+## Описание
+
+Реализация классической карточной игры - пасьянс "Косынка".
+
+[Ссылка на веб сайт проекта](https://bibletoon.xyz/solitaire)
 
 Автор работы: **Иванов Александр, M33001**
