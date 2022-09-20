@@ -13,7 +13,7 @@ type CardComponentProps = {
 const CardComponent : FC<CardComponentProps> = ({card, className, hidden} : CardComponentProps) => {
     const color = hidden ? styles.red : card.suit === Suit.Heart || card.suit === Suit.Diamond ? styles.red : styles.black;
     return (
-        <div draggable={true} className={[styles.card, color, className].join(" ")}>{hidden ? '\u{1F0A0}' : card.toChar()}</div>
+        <div draggable={!hidden} className={[styles.card, color, className].join(" ")}>{hidden ? '\u{1F0A0}' : card.toChar()}</div>
     );
 };
 
