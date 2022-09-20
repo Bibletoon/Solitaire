@@ -1,9 +1,5 @@
-import React, {FC} from 'react';
-import CardComponent from "../cards/CardComponent";
+import React, {FC, useState} from 'react';
 import CardStackComponent from "../cards/CardStackComponent";
-import Card from "../../models/Card";
-import Suit from "../../models/Suit";
-import CardValue from "../../models/CardValue";
 import styles from "./BoardComponent.module.css"
 import SolitaireGame from "../../models/SolitaireGame";
 import ClassicDeckCreator from "../../models/deckInitializer/ClassicDeckCreator";
@@ -12,7 +8,13 @@ import DeckComponent from "../cards/DeckComponent";
 
 const BoardComponent : FC = () => {
     const deckCreator = new ClassicDeckCreator();
-    const game = new SolitaireGame(shuffle(deckCreator.create()))
+    const [game, setGame] = useState<SolitaireGame>(SolitaireGame.create(shuffle(deckCreator.create())));
+    const moveCard = (sourceX : number, sourceY : number, targetX : number) : void => {
+        const newGame = new SolitaireGame(game.deck, game.foundations, game.layout);
+        newGame.moveCard(sourceX, sourceY, targetX);
+        setGame(newGame);
+    }
+
 
     return (
         <div className={styles.board}>
@@ -30,8 +32,8 @@ const BoardComponent : FC = () => {
             </div>
             <div className={[styles.board__layout, "row"].join(" ")}>
                 {
-                    game.layout.map(f =>
-                        <CardStackComponent cards={f}/>
+                    game.layout.map((f, x) =>
+                        <CardStackComponent x={x} moveCard={moveCard} cards={f}/>
                     )
                 }
             </div>
