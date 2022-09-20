@@ -2,23 +2,27 @@ import React from 'react';
 import Card from "../../models/Card";
 import CardComponent from "./CardComponent";
 import styles from "./CardStackComponent.module.css"
-import Suit from "../../models/Suit";
-import CardValue from "../../models/CardValue";
 import EmptyCardComponent from "./EmptyCardComponent";
+import CardStack from "../../models/CardStack";
 
 interface CardStackProps {
-    cards : Card[];
+    cards : CardStack;
 }
 
 const CardStackComponent = ({cards} : CardStackProps) => {
     return (
         <div className={[styles.card__stack, "column"].join(" ")}>
             {
-                cards.map(c =>
-                        <CardComponent card={c} hidden={c !== cards[cards.length - 1]}/>
+                cards.hidden.map(c =>
+                        <CardComponent card={c} hidden={true} />
                     )
             }
-            {cards.length === 0 && <EmptyCardComponent/> }
+            {
+                cards.shown.map(c =>
+                    <CardComponent card={c} hidden={false} />
+                )
+            }
+            {cards.hidden.length + cards.shown.length === 0 && <EmptyCardComponent/> }
         </div>
     );
 };

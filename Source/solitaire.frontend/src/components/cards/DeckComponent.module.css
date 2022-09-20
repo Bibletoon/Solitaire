@@ -1,0 +1,10 @@
+.overlay {
+    z-index: 9;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.deck {
+    position: relative;
+}

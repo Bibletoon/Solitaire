@@ -6,14 +6,20 @@ import Suit from "../../models/Suit";
 
 type CardComponentProps = {
     card : Card
-    hidden : Boolean
+    hidden? : Boolean
+    className? : string
 }
 
-const CardComponent : FC<CardComponentProps> = ({card, hidden = false} : CardComponentProps) => {
+const CardComponent : FC<CardComponentProps> = ({card, className, hidden} : CardComponentProps) => {
     const color = hidden ? styles.red : card.suit === Suit.Heart || card.suit === Suit.Diamond ? styles.red : styles.black;
     return (
-        <div draggable={true} className={[styles.card, color].join(" ")}>{hidden ? '\u{1F0A0}' : card.toChar()}</div>
+        <div draggable={true} className={[styles.card, color, className].join(" ")}>{hidden ? '\u{1F0A0}' : card.toChar()}</div>
     );
+};
+
+CardComponent.defaultProps = {
+    hidden : false,
+    className : ""
 };
 
 export default CardComponent;
