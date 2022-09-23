@@ -1,38 +1,12 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC} from 'react';
 import CardStackComponent from "../cards/CardStackComponent";
 import styles from "./BoardComponent.module.css"
-import SolitaireGame from "../../models/SolitaireGame";
-import ClassicDeckCreator from "../../models/deckInitializer/ClassicDeckCreator";
-import {shuffle} from "../../models/DeckUtils";
 import FoundationComponent from "../cards/FoundationComponent";
-import CardPosition from "../../models/CardPosition";
-import PlacePosition from "../../models/PlacePosition";
 import DeckComponent from "../cards/DeckComponent";
+import useGame from "../../hooks/UseGame";
 
 const BoardComponent : FC = () => {
-    const deckCreator = new ClassicDeckCreator();
-
-    const [game, setGame] = useState<SolitaireGame>(SolitaireGame.create(shuffle(deckCreator.create())));
-    const moveCard = (cardPosition : CardPosition, placePosition : PlacePosition) : void => {
-        game.moveCard(cardPosition, placePosition);
-        reset()
-    }
-
-    const showDeckCard = () : void => {
-        let card = game.deck.hidden.pop();
-        if (card === undefined) {
-            game.deck.hidden = game.deck.shown.reverse();
-            game.deck.shown = [];
-        } else {
-            game.deck.shown.push(card);
-        }
-        reset()
-    }
-
-    const [seed, setSeed] = useState(1);
-    const reset = () => {
-        setSeed(Math.random());
-    }
+    const {game, moveCard, showDeckCard} = useGame();
 
     return (
         <div className={styles.board}>
