@@ -8,7 +8,7 @@ import PlacementType from "../../models/PlacementType";
 import CardPosition from "../../models/CardPosition";
 import PlacePosition from "../../models/PlacePosition";
 
-interface CardStackProps {
+type CardStackProps = {
     cards : CardStack;
     x : number,
     moveCard: (cardPosition : CardPosition, placePosition : PlacePosition) => void

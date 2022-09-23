@@ -4,7 +4,7 @@ import CardGroupComponent from "./CardGroupComponent";
 import Card from "../../models/Card";
 import PlacementType from "../../models/PlacementType";
 
-interface DeckComponentProps {
+type DeckComponentProps = {
     hidden : Card[],
     shown : Card[],
     showDeckCard : () => void

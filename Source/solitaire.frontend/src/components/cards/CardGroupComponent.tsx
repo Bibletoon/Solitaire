@@ -6,7 +6,7 @@ import EmptyCardComponent from "./EmptyCardComponent";
 import PlacementType from "../../models/PlacementType";
 import Card from "../../models/Card";
 
-interface DeckComponentProps {
+type DeckComponentProps = {
     deck : Card[]
     x : number,
     placement : PlacementType,
