@@ -1,6 +1,10 @@
 import CardStack from "./CardStack";
 import Deck from "./Deck";
 import Card from "./Card";
+import PlacementType from "./PlacementType";
+import placementType from "./PlacementType";
+import CardPosition from "./CardPosition";
+import PlacePosition from "./PlacePosition";
 
 export default class SolitaireGame {
     deck: CardStack
@@ -29,8 +33,27 @@ export default class SolitaireGame {
         return new SolitaireGame(finalDeck, foundations, layout);
     }
 
-    moveCard(sourceX : number, sourceY : number, targetX : number) : void {
-        let cards = this.layout[sourceX].takeCards(sourceY)
-        this.layout[targetX].placeCards(cards)
+    moveCard(cardPosition : CardPosition, placePosition : PlacePosition) : void {
+        let cards : Card[];
+        switch (cardPosition.placement) {
+            case PlacementType.Deck:
+                cards = this.deck.shown.splice(cardPosition.y, 1);
+                break
+            case PlacementType.Foundation:
+                cards = this.foundations[cardPosition.x].splice(cardPosition.y, 1);
+                break
+            case PlacementType.Layout:
+                cards = this.layout[cardPosition.x].takeCards(cardPosition.y);
+                break
+        }
+
+        switch (placePosition.placement) {
+            case PlacementType.Layout:
+                this.layout[placePosition.x].placeCards(cards);
+                break
+            case PlacementType.Foundation:
+                this.foundations[placePosition.x].push(...cards);
+                break
+        }
     }
 }
