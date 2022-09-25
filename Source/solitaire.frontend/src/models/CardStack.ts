@@ -17,4 +17,15 @@ export default class CardStack {
 
         this.shown.push(card)
     }
+
+    takeCards(y : number) : Card[] {
+        const cards = this.shown.splice(y);
+        if (this.shown.length === 0)
+            this.showCard();
+        return cards;
+    }
+
+    placeCards(cards : Card[]) {
+        this.shown.push(...cards)
+    }
 }

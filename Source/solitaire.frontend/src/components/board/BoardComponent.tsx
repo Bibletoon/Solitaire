@@ -1,37 +1,28 @@
 import React, {FC} from 'react';
-import CardComponent from "../cards/CardComponent";
 import CardStackComponent from "../cards/CardStackComponent";
-import Card from "../../models/Card";
-import Suit from "../../models/Suit";
-import CardValue from "../../models/CardValue";
 import styles from "./BoardComponent.module.css"
-import SolitaireGame from "../../models/SolitaireGame";
-import ClassicDeckCreator from "../../models/deckInitializer/ClassicDeckCreator";
-import {shuffle} from "../../models/DeckUtils";
+import FoundationComponent from "../cards/FoundationComponent";
 import DeckComponent from "../cards/DeckComponent";
+import useGame from "../../hooks/UseGame";
 
 const BoardComponent : FC = () => {
-    const deckCreator = new ClassicDeckCreator();
-    const game = new SolitaireGame(shuffle(deckCreator.create()))
+    const {game, moveCard, showDeckCard} = useGame();
 
     return (
         <div className={styles.board}>
             <div className={[styles.board__row, "row"].join(" ")}>
-                <div className={[styles.board__deck, "row"].join(" ")}>
-                    <DeckComponent deck={game.deck.hidden} />
-                    <DeckComponent deck={game.deck.shown} hidden={false}/>
-                </div>
+                <DeckComponent showDeckCard={showDeckCard} hidden={game.deck.hidden} shown={game.deck.shown}/>
                 <div className={[styles.board__foundations, "row"].join(" ")}>
-                    <DeckComponent deck={game.foundations[0]} hidden={false}/>
-                    <DeckComponent deck={game.foundations[1]} hidden={false}/>
-                    <DeckComponent deck={game.foundations[2]} hidden={false}/>
-                    <DeckComponent deck={game.foundations[3]} hidden={false}/>
+                    {
+                        game.foundations.map((f, x) =>
+                            <FoundationComponent key={x} x={x} moveCard={moveCard} deck={f}/>
+                        )}
                 </div>
             </div>
             <div className={[styles.board__layout, "row"].join(" ")}>
                 {
-                    game.layout.map(f =>
-                        <CardStackComponent cards={f}/>
+                    game.layout.map((f, x) =>
+                        <CardStackComponent key={x} x={x} moveCard={moveCard} cards={f}/>
                     )
                 }
             </div>
