@@ -4,14 +4,14 @@ import styles from "./CardStackComponent.module.css"
 import EmptyCardComponent from "./EmptyCardComponent";
 import CardStack from "../../models/CardStack";
 import PlacementType from "../../models/PlacementType";
-import CardPosition from "../../models/CardPosition";
 import PlacePosition from "../../models/PlacePosition";
 import useCardDrop from "../../hooks/UseCardDrop";
+import MoveCardFunction from "../../models/MoveCardFunction";
 
 type CardStackProps = {
     cards : CardStack;
     x : number,
-    moveCard: (cardPosition : CardPosition, placePosition : PlacePosition) => void
+    moveCard: MoveCardFunction
 }
 
 const CardStackComponent = ({cards, x, moveCard} : CardStackProps) => {

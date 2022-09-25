@@ -1,16 +1,15 @@
 import React, {FC} from 'react';
 import Deck from "../../models/Deck";
 import CardGroupComponent from "./CardGroupComponent";
-import {useDrop} from "react-dnd";
 import PlacementType from "../../models/PlacementType";
-import CardPosition from "../../models/CardPosition";
 import PlacePosition from "../../models/PlacePosition";
 import useCardDrop from "../../hooks/UseCardDrop";
+import MoveCardFunction from "../../models/MoveCardFunction";
 
 type FoundationComponentProps = {
     deck : Deck,
     x : number,
-    moveCard: (cardPosition : CardPosition, placePosition : PlacePosition) => void
+    moveCard: MoveCardFunction
 }
 
 const FoundationComponent : FC<FoundationComponentProps> = ({deck, x, moveCard}) => {
