@@ -8,7 +8,7 @@ const useCardDrop = (placePosition : PlacePosition, moveCard: MoveCardFunction) 
     const [_, drop] = useDrop({
         accept: "card",
         canDrop : (item : CardPosition, monitor) => {
-            if (item.x == placePosition.x && item.placement === PlacementType.Foundation)
+            if (item.x === placePosition.x && item.placement === PlacementType.Foundation)
                 return false;
             return true;
         },

@@ -1,5 +1,4 @@
-import React, {FC, MouseEventHandler} from 'react';
-import Deck from "../../models/Deck";
+import React, {FC} from 'react';
 import styles from "./CardGroupComponent.module.css"
 import CardComponent from "./CardComponent";
 import EmptyCardComponent from "./EmptyCardComponent";
@@ -18,7 +17,7 @@ const CardGroupComponent : FC<DeckComponentProps> = ({deck, x, placement, hidden
     return (
         <div className={styles.deck} onClick={onClick}>
             {deck.map((c, y) =>
-                y == deck.length-1
+                y === deck.length-1
                     ? <CardComponent key={y} position={{x, y, placement}} card={deck[y]} hidden={hidden} canDrag={!hidden}/>
                     : <CardComponent key={y} className={styles.invisible} position={{x, y, placement}} card={deck[y]} hidden={true} canDrag={!hidden}/>
             )}
