@@ -5,6 +5,7 @@ import {useDrop} from "react-dnd";
 import PlacementType from "../../models/PlacementType";
 import CardPosition from "../../models/CardPosition";
 import PlacePosition from "../../models/PlacePosition";
+import useCardDrop from "../../hooks/UseCardDrop";
 
 type FoundationComponentProps = {
     deck : Deck,
@@ -18,17 +19,7 @@ const FoundationComponent : FC<FoundationComponentProps> = ({deck, x, moveCard})
         placement : PlacementType.Foundation
     }
 
-    const [_, drop] = useDrop({
-        accept: "card",
-        canDrop : (item : CardPosition, monitor) => {
-            if (item.x == x && item.placement === PlacementType.Foundation)
-                return false;
-            return true;
-        },
-        drop : (item : CardPosition, monitor) => {
-            moveCard(item, placePosition);
-        }
-    })
+    const [drop] = useCardDrop(placePosition, moveCard);
 
     return (
         <div ref={drop}>

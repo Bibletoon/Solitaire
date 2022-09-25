@@ -3,10 +3,10 @@ import CardComponent from "./CardComponent";
 import styles from "./CardStackComponent.module.css"
 import EmptyCardComponent from "./EmptyCardComponent";
 import CardStack from "../../models/CardStack";
-import {useDrop} from "react-dnd";
 import PlacementType from "../../models/PlacementType";
 import CardPosition from "../../models/CardPosition";
 import PlacePosition from "../../models/PlacePosition";
+import useCardDrop from "../../hooks/UseCardDrop";
 
 type CardStackProps = {
     cards : CardStack;
@@ -19,17 +19,7 @@ const CardStackComponent = ({cards, x, moveCard} : CardStackProps) => {
         x : x,
         placement : PlacementType.Layout
     }
-    const [_, drop] = useDrop({
-        accept: "card",
-        canDrop : (item : CardPosition, monitor) => {
-            if (item.x === x && item.placement === PlacementType.Layout)
-                return false;
-            return true;
-        },
-        drop : (item : CardPosition, monitor) => {
-            moveCard(item, placePosition);
-        }
-    })
+    const [drop] = useCardDrop(placePosition, moveCard)
 
     return (
         <div ref={drop} className={[styles.card__stack, "column"].join(" ")}>
