@@ -6,16 +6,14 @@ import GameInfoComponent from "./components/board/GameInfoComponent";
 import { DndProvider } from 'react-dnd'
 import { MultiBackend } from 'react-dnd-multi-backend'
 import { HTML5toTouch } from 'rdndmb-html5-to-touch'
+import GameComponent from "./components/game/GameComponent";
 
 function App() {
   return (
     <div className="App">
     <DndProvider backend={MultiBackend} options={HTML5toTouch}>
         <NavbarComponent/>
-        <Container>
-          <BoardComponent/>
-          <GameInfoComponent/>
-        </Container>
+        <GameComponent/>
       </DndProvider>
     </div>
   );

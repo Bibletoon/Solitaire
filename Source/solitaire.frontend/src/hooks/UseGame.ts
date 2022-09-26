@@ -8,9 +8,11 @@ import ClassicDeckCreator from "../models/deckInitializer/ClassicDeckCreator";
 const useGame = () => {
     const deckCreator = new ClassicDeckCreator();
     const [game, setGame] = useState(SolitaireGame.create(shuffle(deckCreator.create())));
+    const [movesCount, setMovesCount] = useState(0);
 
     const moveCard = (cardPosition : CardPosition, placePosition : PlacePosition) : void => {
         game.moveCard(cardPosition, placePosition);
+        setMovesCount(movesCount + 1);
         setGame(new SolitaireGame(game.deck, game.foundations, game.layout));
     }
 
@@ -22,10 +24,11 @@ const useGame = () => {
         } else {
             game.deck.shown.push(card);
         }
+        setMovesCount(movesCount + 1);
         setGame(new SolitaireGame(game.deck, game.foundations, game.layout))
     }
 
-    return {game, moveCard, showDeckCard}
+    return {game, movesCount, moveCard, showDeckCard}
 }
 
 export default useGame;
