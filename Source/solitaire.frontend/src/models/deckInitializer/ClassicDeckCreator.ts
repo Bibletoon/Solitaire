@@ -7,8 +7,9 @@ import Card from "../Card";
 export default class ClassicDeckCreator implements IDeckCreator {
     create() : Deck {
         let deck = new Array<Card>();
-        [Suit.Heart, Suit.Spade, Suit.Diamond, Suit.Spade].forEach(s => {
+        [Suit.Heart, Suit.Spade, Suit.Diamond, Suit.Club].forEach(s => {
             [
+                CardValue.ace,
                 CardValue.two,
                 CardValue.three,
                 CardValue.four,
