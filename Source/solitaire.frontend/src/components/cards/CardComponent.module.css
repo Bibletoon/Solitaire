@@ -2,8 +2,10 @@
     background-color: white;
     height: 78px;
     font-size: 82px;
-    line-height: 78px;
+    line-height: 64px;
     cursor: pointer;
+
+    font-family: "Segui Symbol", sans-serif;
 }
 
 .red {
@@ -18,7 +20,7 @@
     .card {
         height: 128px;
         font-size: 134px;
-        line-height: 128px;
+        line-height: 108px;
     }
 }
 
@@ -27,6 +29,6 @@
     .card {
         height: 158px;
         font-size: 168px;
-        line-height: 158px;
+        line-height: 134px;
     }
 }
