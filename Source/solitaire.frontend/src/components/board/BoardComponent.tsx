@@ -4,9 +4,16 @@ import styles from "./BoardComponent.module.css"
 import FoundationComponent from "../cards/FoundationComponent";
 import DeckComponent from "../cards/DeckComponent";
 import useGame from "../../hooks/UseGame";
+import SolitaireGame from "../../models/SolitaireGame";
+import MoveCardFunction from "../../models/MoveCardFunction";
 
-const BoardComponent : FC = () => {
-    const {game, moveCard, showDeckCard} = useGame();
+type BoardComponentProps = {
+    game : SolitaireGame,
+    moveCard : MoveCardFunction,
+    showDeckCard : () => void,
+}
+
+const BoardComponent : FC<BoardComponentProps> = ({game, moveCard, showDeckCard}) => {
 
     return (
         <div className={styles.board}>
