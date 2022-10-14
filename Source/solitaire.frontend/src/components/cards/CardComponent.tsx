@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import styles from './CardComponent.module.css';
 import Card from "../../models/Card";
-import Suit from "../../models/Suit";
+import {Suit} from "../../models/Suit";
 import {useDrag} from "react-dnd";
 import CardPosition from "../../models/CardPosition";
 

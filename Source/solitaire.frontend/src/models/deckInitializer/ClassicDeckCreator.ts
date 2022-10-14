@@ -1,6 +1,6 @@
 import IDeckCreator from "./IDeckCreator";
 import Deck from "../Deck";
-import Suit from "../Suit";
+import {Suit} from "../Suit";
 import CardValue from "../CardValue";
 import Card from "../Card";
 

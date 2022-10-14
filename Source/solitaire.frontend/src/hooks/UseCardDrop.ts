@@ -1,10 +1,9 @@
 import {useDrop} from "react-dnd";
 import CardPosition from "../models/CardPosition";
-import PlacementType from "../models/PlacementType";
 import PlacePosition from "../models/PlacePosition";
-import MoveCardFunction from "../models/MoveCardFunction";
+import {MoveCardFunction, CanMoveCardFunction} from "../models/MoveCardFunction";
 
-const useCardDrop = (placePosition : PlacePosition, moveCard: MoveCardFunction) => {
+const useCardDrop = (placePosition : PlacePosition, canMoveCard : CanMoveCardFunction, moveCard: MoveCardFunction) => {
     const [_, drop] = useDrop({
         accept: "card",
         canDrop : (item : CardPosition, monitor) => {
@@ -13,7 +12,7 @@ const useCardDrop = (placePosition : PlacePosition, moveCard: MoveCardFunction) 
             return true;
         },
         drop : (item : CardPosition, monitor) => {
-            moveCard(item, placePosition);
+            if (canMoveCard(item, placePosition)) moveCard(item, placePosition);
         }
     })
 

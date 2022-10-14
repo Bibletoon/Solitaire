@@ -4,7 +4,7 @@
     font-size: 82px;
     line-height: 64px;
     cursor: pointer;
-
+    overflow: hidden;
     font-family: "Segui Symbol", sans-serif;
 }
 
@@ -28,7 +28,7 @@
 @media (min-width: 1300px) {
     .card {
         height: 158px;
-        font-size: 168px;
-        line-height: 134px;
+        font-size: 158px;
+        line-height: 124px;
     }
 }
