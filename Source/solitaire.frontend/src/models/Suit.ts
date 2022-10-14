@@ -5,4 +5,10 @@ enum Suit {
     Club
 }
 
-export default Suit;
+class SuitUtils {
+    public static isRed(suit : Suit) {
+        return suit === Suit.Heart || suit === Suit.Diamond;
+    }
+}
+
+export {Suit, SuitUtils};

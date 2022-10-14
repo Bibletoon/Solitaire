@@ -16,6 +16,8 @@ const useGame = () => {
         setGame(new SolitaireGame(game.deck, game.foundations, game.layout));
     }
 
+    const canMoveCard = (cardPosition : CardPosition, placePosition : PlacePosition) => game.canMoveCard(cardPosition, placePosition);
+
     const showDeckCard = () : void => {
         const card = game.deck.hidden.pop();
         if (card === undefined) {
@@ -28,7 +30,7 @@ const useGame = () => {
         setGame(new SolitaireGame(game.deck, game.foundations, game.layout))
     }
 
-    return {game, movesCount, moveCard, showDeckCard}
+    return {game, movesCount, canMoveCard, moveCard, showDeckCard}
 }
 
 export default useGame;

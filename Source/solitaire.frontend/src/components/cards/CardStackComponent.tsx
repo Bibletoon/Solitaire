@@ -6,27 +6,28 @@ import CardStack from "../../models/CardStack";
 import PlacementType from "../../models/PlacementType";
 import PlacePosition from "../../models/PlacePosition";
 import useCardDrop from "../../hooks/UseCardDrop";
-import MoveCardFunction from "../../models/MoveCardFunction";
+import {MoveCardFunction, CanMoveCardFunction} from "../../models/MoveCardFunction";
 
 type CardStackProps = {
     cards : CardStack;
     x : number,
+    canMoveCard : CanMoveCardFunction,
     moveCard: MoveCardFunction
 }
 
-const CardStackComponent = ({cards, x, moveCard} : CardStackProps) => {
+const CardStackComponent = ({cards, x, canMoveCard, moveCard} : CardStackProps) => {
     const placePosition : PlacePosition = {
         x : x,
         placement : PlacementType.Layout
     }
-    const [drop] = useCardDrop(placePosition, moveCard)
+    const [drop] = useCardDrop(placePosition, canMoveCard, moveCard)
 
     return (
         <div ref={drop} className={[styles.card__stack, "column"].join(" ")}>
             {
                 cards.hidden.map((c, y) =>
-                        <CardComponent key={`hidden-${x}-${y}`} position={{x, y : -y, placement : PlacementType.Layout}} card={c} hidden={true} canDrag={false} />
-                    )
+                    <CardComponent key={`hidden-${x}-${y}`} position={{x, y : -y, placement : PlacementType.Layout}} card={c} hidden={true} canDrag={false} />
+                )
             }
             {
                 cards.shown.map((c, y) =>

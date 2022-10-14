@@ -1,4 +1,4 @@
-import Suit from "./Suit";
+import {Suit} from "./Suit";
 import CardValue from "./CardValue";
 
 class Card {
@@ -13,7 +13,7 @@ class Card {
     }
 
      toChar() : string {
-        return String.fromCodePoint(this.baseCharCode + this.suit*16+this.value);
+        return String.fromCodePoint(this.baseCharCode + this.suit*16+ this.value + Math.floor((this.value === 0 ? 0 : this.value - 1) / 10));
      }
 }
 
