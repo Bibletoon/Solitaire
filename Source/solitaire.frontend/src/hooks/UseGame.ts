@@ -7,7 +7,9 @@ import ClassicDeckCreator from "../models/deckInitializer/ClassicDeckCreator";
 
 const useGame = () => {
     const deckCreator = new ClassicDeckCreator();
-    const [game, setGame] = useState(SolitaireGame.create(shuffle(deckCreator.create())));
+    let deck = shuffle(deckCreator.create());
+    let [startDeck, setStartDeck] = useState(deck);
+    const [game, setGame] = useState(SolitaireGame.create([...startDeck]));
     const [movesCount, setMovesCount] = useState(0);
 
     const moveCard = (cardPosition : CardPosition, placePosition : PlacePosition) : void => {
@@ -30,7 +32,19 @@ const useGame = () => {
         setGame(new SolitaireGame(game.deck, game.foundations, game.layout))
     }
 
-    return {game, movesCount, canMoveCard, moveCard, showDeckCard}
+    const restartGame = () : void => {
+        setMovesCount(0);
+        setGame(SolitaireGame.create([...startDeck]));
+    }
+
+    const newGame = () : void => {
+        let deck = shuffle(deckCreator.create());
+        setStartDeck(deck);
+        setMovesCount(0);
+        setGame(SolitaireGame.create([...deck]));
+    }
+
+    return {game, movesCount, canMoveCard, moveCard, showDeckCard, newGame, restartGame}
 }
 
 export default useGame;

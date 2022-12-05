@@ -3,10 +3,12 @@ import styles from "./GameInfoComponent.module.css";
 import {Button} from "@mui/material";
 
 type GameInfoComponentProps = {
-    movesCount : number
+    movesCount : number,
+    newGame : () => void,
+    restartGame : () => void
 }
 
-const GameInfoComponent : FC<GameInfoComponentProps> = ({movesCount}) => {
+const GameInfoComponent : FC<GameInfoComponentProps> = ({movesCount, newGame, restartGame}) => {
     return (
         <div className={styles.gameInfo}>
             <div className={styles.gameInfo__stats}>
@@ -14,8 +16,8 @@ const GameInfoComponent : FC<GameInfoComponentProps> = ({movesCount}) => {
                 <div className={styles.gameInfo__item}>Ходы: {movesCount}</div>
             </div>
             <div className={styles.gameInfo__buttons}>
-                <Button variant="contained">Начать сначала</Button>
-                <Button variant="contained">Новая игра</Button>
+                <Button onClick={restartGame} variant="contained">Начать сначала</Button>
+                <Button onClick={newGame} variant="contained">Новая игра</Button>
                 <Button variant="contained">Правила</Button>
             </div>
         </div>
