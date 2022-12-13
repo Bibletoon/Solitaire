@@ -13,6 +13,14 @@ const useGame = () => {
     const [game, setGame] = useState(SolitaireGame.create([...startDeck]));
     const [movesCount, setMovesCount] = useState(0);
     const {seconds, minutes, hours, start, pause, reset} = useStopwatch({autoStart: false});
+    const [gameEnded, setGameEnded] = useState(false);
+
+    const checkGameEnd = () : void => {
+        if (game.foundations.reduce((s, el) => s+el.length, 0) == 52) {
+            setGameEnded(true);
+            pause();
+        }
+    }
 
     const moveCard = (cardPosition : CardPosition, placePosition : PlacePosition) : void => {
         if (movesCount == 0)
@@ -20,9 +28,10 @@ const useGame = () => {
         game.moveCard(cardPosition, placePosition);
         setMovesCount(movesCount + 1);
         setGame(new SolitaireGame(game.deck, game.foundations, game.layout));
+        checkGameEnd();
     }
 
-    const canMoveCard = (cardPosition : CardPosition, placePosition : PlacePosition) => game.canMoveCard(cardPosition, placePosition);
+    const canMoveCard = (cardPosition : CardPosition, placePosition : PlacePosition) => !gameEnded && game.canMoveCard(cardPosition, placePosition);
 
     const showDeckCard = () : void => {
         if (movesCount == 0)
@@ -39,12 +48,14 @@ const useGame = () => {
     }
 
     const restartGame = () : void => {
+        setGameEnded(false);
         setMovesCount(0);
         setGame(SolitaireGame.create([...startDeck]));
         reset(undefined, false);
     }
 
     const newGame = () : void => {
+        setGameEnded(false);
         let deck = shuffle(deckCreator.create());
         setStartDeck(deck);
         setMovesCount(0);
@@ -52,7 +63,7 @@ const useGame = () => {
         reset(undefined, false);
     }
 
-    return {game, movesCount, seconds, minutes, hours, canMoveCard, moveCard, showDeckCard, newGame, restartGame}
+    return {game, gameEnded, movesCount, seconds, minutes, hours, canMoveCard, moveCard, showDeckCard, newGame, restartGame}
 }
 
 export default useGame;
