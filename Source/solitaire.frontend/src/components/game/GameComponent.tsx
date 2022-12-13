@@ -5,12 +5,12 @@ import useGame from "../../hooks/UseGame";
 import Container from "../layout/Container";
 
 const GameComponent = () => {
-    const {game, movesCount, canMoveCard, moveCard, showDeckCard} = useGame();
+    const {game, movesCount, seconds, minutes, hours, canMoveCard, moveCard, showDeckCard, newGame, restartGame} = useGame();
 
     return (
         <Container>
             <BoardComponent game={game} canMoveCard={canMoveCard} moveCard={moveCard} showDeckCard={showDeckCard}/>
-            <GameInfoComponent movesCount={movesCount}/>
+            <GameInfoComponent seconds={seconds} minutes={minutes} hours={hours} movesCount={movesCount} newGame={newGame} restartGame={restartGame}/>
         </Container>
     );
 };
