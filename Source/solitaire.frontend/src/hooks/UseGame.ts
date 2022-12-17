@@ -17,6 +17,15 @@ const useGame = () => {
 
     const checkGameEnd = () : void => {
         if (game.foundations.reduce((s, el) => s+el.length, 0) == 52) {
+            const bestScore = localStorage.getItem("bestScore");
+            if (bestScore == null || parseInt(bestScore) > movesCount) {
+                localStorage.setItem("bestScore", movesCount.toString());
+            }
+
+            const bestTime = localStorage.getItem("bestTime");
+            if (bestTime == null || parseInt(bestTime) > hours*3600 + minutes*60 + seconds) {
+                localStorage.setItem("bestTime", hours*3600 + minutes*60 + seconds + "");
+            }
             setGameEnded(true);
             pause();
         }

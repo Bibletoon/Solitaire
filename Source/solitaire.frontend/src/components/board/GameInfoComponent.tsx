@@ -26,6 +26,9 @@ const modalStyle = {
 
 const GameInfoComponent : FC<GameInfoComponentProps> = ({seconds, minutes, hours, movesCount, newGame, restartGame}) => {
     const [modalIsOpen, setOpen] = useState(false);
+    const bestScore = localStorage.getItem("bestScore");
+    const bestTime = localStorage.getItem("bestTime");
+    const bestTimeString = bestTime ? Math.floor(parseInt(bestTime) / 3600) + ":" + Math.floor((parseInt(bestTime) % 3600) / 60) + ":" + (parseInt(bestTime) % 3600) % 60 : "Нет";
 
     return (
         <div className={styles.gameInfo}>
@@ -52,6 +55,8 @@ const GameInfoComponent : FC<GameInfoComponentProps> = ({seconds, minutes, hours
             <div className={styles.gameInfo__stats}>
                 <div className={styles.gameInfo__item}>Время: {hours}:{minutes}:{seconds}</div>
                 <div className={styles.gameInfo__item}>Ходы: {movesCount}</div>
+                <div className={styles.gameInfo__item}>Лучший счёт: {bestScore || "Нет"}</div>
+                <div className={styles.gameInfo__item}>Лучшее время: {bestTimeString}</div>
             </div>
             <div className={styles.gameInfo__buttons}>
                 <Button onClick={restartGame} variant="contained">Начать сначала</Button>
