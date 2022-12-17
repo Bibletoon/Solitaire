@@ -1,6 +1,7 @@
 import React, {FC, useState} from 'react';
 import styles from "./GameInfoComponent.module.css";
 import {Box, Button, Modal, Typography} from "@mui/material";
+import stylesModal from "../ModalComponent.module.css";
 
 type GameInfoComponentProps = {
     seconds : number,
@@ -16,7 +17,6 @@ const modalStyle = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -33,7 +33,7 @@ const GameInfoComponent : FC<GameInfoComponentProps> = ({seconds, minutes, hours
     return (
         <div className={styles.gameInfo}>
             <Modal open={modalIsOpen} onClose={() => setOpen(false)}>
-                <Box sx={modalStyle}>
+                <Box sx={modalStyle} className={stylesModal.modal}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         Правила пасьянса «Косынка»
                     </Typography>

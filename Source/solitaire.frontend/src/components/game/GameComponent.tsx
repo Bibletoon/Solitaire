@@ -7,13 +7,13 @@ import {Box, Button, CircularProgress, Modal, Typography} from "@mui/material";
 import Fireworks from "@fireworks-js/react";
 import useAnimePicClient from "../../hooks/UseAnimePic";
 import RequestState from "../../hooks/RequestState";
+import styles from '../ModalComponent.module.css';
 
 const modalStyle = {
     position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -46,7 +46,7 @@ const GameComponent = () => {
                         }}
                     />
                     <Modal open={gameEnded}>
-                        <Box sx={modalStyle}>
+                        <Box sx={{modalStyle}} className={styles.modal}>
                             <Typography align="center" variant={"h5"}>Ура, победа!</Typography>
                             {status == RequestState.Pending
                                 ? <CircularProgress />
