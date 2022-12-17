@@ -13,7 +13,7 @@ const useGame = () => {
     const [game, setGame] = useState(SolitaireGame.create([...startDeck]));
     const [movesCount, setMovesCount] = useState(0);
     const {seconds, minutes, hours, start, pause, reset} = useStopwatch({autoStart: false});
-    const [gameEnded, setGameEnded] = useState(false);
+    const [gameEnded, setGameEnded] = useState(true);
 
     const checkGameEnd = () : void => {
         if (game.foundations.reduce((s, el) => s+el.length, 0) == 52) {
