@@ -1,0 +1,9 @@
+.modal {
+    width: 300px;
+}
+
+@media (min-width: 635px) {
+    .modal {
+        width: 400px;
+    }
+}

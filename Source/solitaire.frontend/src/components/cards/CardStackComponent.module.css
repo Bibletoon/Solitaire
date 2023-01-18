@@ -1,0 +1,17 @@
+.card__stack div:not(:last-child) {
+    margin-bottom: -44px;
+}
+
+
+@media (min-width: 635px) {
+    .card__stack div:not(:last-child) {
+        margin-bottom: -74px;
+    }
+}
+
+
+@media (min-width: 1300px) {
+    .card__stack div:not(:last-child) {
+        margin-bottom: -115px;
+    }
+}

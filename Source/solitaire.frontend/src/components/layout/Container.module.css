@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 20px calc(50% - 187px) 0;
+}
+
+@media (min-width: 635px) {
+    .container {
+        flex-direction: column-reverse;
+        padding: 20px calc(50% - 310px) 0;
+    }
+}
+
+@media (min-width:880px) {
+    .container {
+        flex-direction: row;
+        padding: 20px max(calc(50% - 500px), 40px) 0;
+    }
+}
+
+@media (min-width:1300px) {
+    .container {
+        flex-direction: row;
+        padding: 20px max(calc(50% - 680px), 40px) 0;
+    }
+}

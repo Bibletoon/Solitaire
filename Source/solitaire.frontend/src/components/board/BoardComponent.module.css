@@ -1,0 +1,34 @@
+.board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 375px;
+}
+
+.board__row {
+    justify-content: space-between;
+}
+
+.board__layout {
+    justify-content: space-evenly;
+}
+
+@media (min-width: 635px) {
+    .board {
+        width: 620px;
+    }
+}
+
+@media (min-width:1300px) {
+    .board {
+        width: 770px;
+    }
+}
+
+.board__deck {
+
+}
+
+.board__foundations {
+
+}
