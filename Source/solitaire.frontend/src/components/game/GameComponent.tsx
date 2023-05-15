@@ -3,10 +3,8 @@ import BoardComponent from "../board/BoardComponent";
 import GameInfoComponent from "../board/GameInfoComponent";
 import useGame from "../../hooks/UseGame";
 import Container from "../layout/Container";
-import {Box, Button, CircularProgress, Modal, Typography} from "@mui/material";
+import {Box, Button, Modal, Typography} from "@mui/material";
 import Fireworks from "@fireworks-js/react";
-import useAnimePicClient from "../../hooks/UseAnimePic";
-import RequestState from "../../hooks/RequestState";
 import styles from '../ModalComponent.module.css';
 
 const modalStyle = {
@@ -17,12 +15,11 @@ const modalStyle = {
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
-    p: 4,
+    p: 2,
 };
 
 const GameComponent = () => {
     const {game, gameEnded, movesCount, seconds, minutes, hours, canMoveCard, moveCard, showDeckCard, newGame, restartGame} = useGame();
-    const {picture, status, getNext} = useAnimePicClient();
 
     return (
         <Container>
@@ -46,23 +43,13 @@ const GameComponent = () => {
                         }}
                     />
                     <Modal open={gameEnded}>
-                        <Box sx={{modalStyle}} className={styles.modal}>
+                        <Box sx={modalStyle} className={styles.modal}>
                             <Typography align="center" variant={"h5"}>Ура, победа!</Typography>
-                            {status == RequestState.Pending
-                                ? <CircularProgress />
-                                : status == RequestState.Success ?
-                                <img style={{width:"100%"}} src={picture} />
-                                : <Typography align="center" variant={"h6"} color={"indianred"}>Sorry Mario, your anime picture is in another castle.</Typography>
-                            }
-                            <Box sx={{
-                                display : 'flex',
-                                flexDirection : 'column',
-                            }}>
-                                <Button onClick={async () => {
-                                    await getNext();
+
+                                <Button fullWidth={true} onClick={async () => {
                                     newGame();
                                 }} variant="contained">Новая игра</Button>
-                            </Box>
+
                         </Box>
                     </Modal>
                 </div>
