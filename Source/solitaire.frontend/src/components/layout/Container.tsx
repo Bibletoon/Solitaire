@@ -1,5 +1,4 @@
 import React, {FC, ReactNode} from 'react';
-import styles from "./Container.module.css"
 import styled from "styled-components";
 
 const ContainerBlock = styled.div`

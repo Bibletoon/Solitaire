@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import CardStackComponent from "../cards/CardStackComponent";
-import styles from "./BoardComponent.module.css"
 import FoundationComponent from "../cards/FoundationComponent";
 import DeckComponent from "../cards/DeckComponent";
 import SolitaireGame from "../../models/SolitaireGame";

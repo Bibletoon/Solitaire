@@ -1,6 +1,5 @@
 import React from 'react';
 import CardComponent from "./CardComponent";
-import styles from "./CardStackComponent.module.css"
 import EmptyCardComponent from "./EmptyCardComponent";
 import CardStack from "../../models/CardStack";
 import PlacementType from "../../models/PlacementType";

@@ -1,5 +1,4 @@
 import React, {FC} from 'react';
-import styles from "./DeckComponent.module.css";
 import CardGroupComponent from "./CardGroupComponent";
 import Card from "../../models/Card";
 import PlacementType from "../../models/PlacementType";

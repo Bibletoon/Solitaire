@@ -5,7 +5,6 @@ import useGame from "../../hooks/UseGame";
 import Container from "../layout/Container";
 import {Button, Typography} from "@mui/material";
 import Fireworks from "@fireworks-js/react";
-import styles from '../ModalComponent.module.css';
 import ModalComponent from "../UI/ModalComponent";
 
 

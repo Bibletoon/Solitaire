@@ -1,5 +1,4 @@
 import React, {FC} from 'react';
-import styles from "./CardGroupComponent.module.css"
 import CardComponent from "./CardComponent";
 import EmptyCardComponent from "./EmptyCardComponent";
 import PlacementType from "../../models/PlacementType";

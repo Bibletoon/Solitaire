@@ -1,7 +1,5 @@
 import React, {FC, useState} from 'react';
-import styles from "./GameInfoComponent.module.css";
-import {Box, Button, Modal, Typography} from "@mui/material";
-import stylesModal from "../ModalComponent.module.css";
+import {Button, Typography} from "@mui/material";
 import styled from "styled-components";
 import ModalComponent from "../UI/ModalComponent";
 

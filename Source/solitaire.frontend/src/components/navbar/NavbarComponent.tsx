@@ -1,5 +1,4 @@
 import React, {FC} from 'react';
-import styles from "./Navbar.module.css"
 import {AccountCircle} from "@mui/icons-material";
 import styled from "styled-components";
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './CardComponent.module.css'
 import styled from "styled-components";
 
 const EmptyCardBlock = styled.div`

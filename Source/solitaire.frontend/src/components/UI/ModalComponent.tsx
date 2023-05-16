@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
-import styles from "../ModalComponent.module.css";
-import {Box, Modal, Paper} from "@mui/material";
+import {Modal} from "@mui/material";
 import styled from "styled-components";
 
 const ModalContent = styled.div`
