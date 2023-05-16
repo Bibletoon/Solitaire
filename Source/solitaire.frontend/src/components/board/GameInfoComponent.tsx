@@ -3,6 +3,7 @@ import styles from "./GameInfoComponent.module.css";
 import {Box, Button, Modal, Typography} from "@mui/material";
 import stylesModal from "../ModalComponent.module.css";
 import styled from "styled-components";
+import ModalComponent from "../UI/ModalComponent";
 
 const GameInfo = styled.div`
   background-color: #f9f9f9;
@@ -62,8 +63,7 @@ const GameInfoComponent : FC<GameInfoComponentProps> = ({seconds, minutes, hours
 
     return (
         <GameInfo>
-            <Modal open={modalIsOpen} onClose={() => setOpen(false)}>
-                <Box sx={modalStyle} className={stylesModal.modal}>
+            <ModalComponent open={modalIsOpen} onClose={() => setOpen(false)}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         Правила пасьянса «Косынка»
                     </Typography>
@@ -80,8 +80,7 @@ const GameInfoComponent : FC<GameInfoComponentProps> = ({seconds, minutes, hours
                         <br/>
                         <Typography component={"span"} variant="body1">Всего мастей представлено четыре: черви, крести, пики, буби.</Typography>
                     </Typography>
-                </Box>
-            </Modal>
+            </ModalComponent>
             <div>
                 <div>Время: {hours}:{minutes}:{seconds}</div>
                 <div>Ходы: {movesCount}</div>

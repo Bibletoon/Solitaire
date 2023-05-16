@@ -3,20 +3,12 @@ import BoardComponent from "../board/BoardComponent";
 import GameInfoComponent from "../board/GameInfoComponent";
 import useGame from "../../hooks/UseGame";
 import Container from "../layout/Container";
-import {Box, Button, Modal, Typography} from "@mui/material";
+import {Button, Typography} from "@mui/material";
 import Fireworks from "@fireworks-js/react";
 import styles from '../ModalComponent.module.css';
+import ModalComponent from "../UI/ModalComponent";
 
-const modalStyle = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 2,
-};
+
 
 const GameComponent = () => {
     const {game, gameEnded, movesCount, seconds, minutes, hours, canMoveCard, moveCard, showDeckCard, newGame, restartGame} = useGame();
@@ -42,16 +34,12 @@ const GameComponent = () => {
                             zIndex: 111
                         }}
                     />
-                    <Modal open={gameEnded}>
-                        <Box sx={modalStyle} className={styles.modal}>
+                    <ModalComponent open={gameEnded}>
                             <Typography align="center" variant={"h5"}>Ура, победа!</Typography>
-
                                 <Button fullWidth={true} onClick={async () => {
                                     newGame();
                                 }} variant="contained">Новая игра</Button>
-
-                        </Box>
-                    </Modal>
+                    </ModalComponent>
                 </div>
             }
             <BoardComponent game={game} canMoveCard={canMoveCard} moveCard={moveCard} showDeckCard={showDeckCard}/>
