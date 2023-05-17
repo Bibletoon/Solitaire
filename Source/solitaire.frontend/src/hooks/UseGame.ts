@@ -6,7 +6,25 @@ import PlacePosition from "../models/PlacePosition";
 import ClassicDeckCreator from "../models/deckInitializer/ClassicDeckCreator";
 import {useStopwatch} from "react-timer-hook";
 
-const useGame = () => {
+type GameInfo = {
+    game: SolitaireGame;
+    gameEnded: boolean;
+    movesCount: number;
+    timer: {
+        seconds: number;
+        minutes: number;
+        hours: number;
+    }
+    actions: {
+        canMoveCard: (cardPosition : CardPosition, placePosition : PlacePosition) => boolean;
+        moveCard: (cardPosition : CardPosition, placePosition : PlacePosition) => void;
+        showDeckCard: () => void;
+        newGame: () => void;
+        restartGame: () => void;
+    }
+}
+
+const useGame = () : GameInfo => {
     const deckCreator = new ClassicDeckCreator();
     let deck = shuffle(deckCreator.create());
     let [startDeck, setStartDeck] = useState(deck);
@@ -16,14 +34,14 @@ const useGame = () => {
     const [gameEnded, setGameEnded] = useState(false);
 
     const checkGameEnd = () : void => {
-        if (game.foundations.reduce((s, el) => s+el.length, 0) == 52) {
+        if (game.foundations.reduce((s, el) => s+el.length, 0) === 52) {
             const bestScore = localStorage.getItem("bestScore");
-            if (bestScore == null || parseInt(bestScore) > movesCount) {
+            if (bestScore === null || parseInt(bestScore) > movesCount) {
                 localStorage.setItem("bestScore", movesCount.toString());
             }
 
             const bestTime = localStorage.getItem("bestTime");
-            if (bestTime == null || parseInt(bestTime) > hours*3600 + minutes*60 + seconds) {
+            if (bestTime === null || parseInt(bestTime) > hours*3600 + minutes*60 + seconds) {
                 localStorage.setItem("bestTime", hours*3600 + minutes*60 + seconds + "");
             }
             setGameEnded(true);
@@ -32,7 +50,7 @@ const useGame = () => {
     }
 
     const moveCard = (cardPosition : CardPosition, placePosition : PlacePosition) : void => {
-        if (movesCount == 0)
+        if (movesCount === 0)
             start();
         game.moveCard(cardPosition, placePosition);
         setMovesCount(movesCount + 1);
@@ -43,7 +61,7 @@ const useGame = () => {
     const canMoveCard = (cardPosition : CardPosition, placePosition : PlacePosition) => !gameEnded && game.canMoveCard(cardPosition, placePosition);
 
     const showDeckCard = () : void => {
-        if (movesCount == 0)
+        if (movesCount === 0)
             start();
         const card = game.deck.hidden.pop();
         if (card === undefined) {
@@ -72,7 +90,23 @@ const useGame = () => {
         reset(undefined, false);
     }
 
-    return {game, gameEnded, movesCount, seconds, minutes, hours, canMoveCard, moveCard, showDeckCard, newGame, restartGame}
+    return {
+            game,
+            gameEnded,
+            movesCount,
+            timer: {
+                seconds,
+                minutes,
+                hours
+            },
+            actions: {
+                canMoveCard, 
+                moveCard, 
+                showDeckCard, 
+                newGame, 
+                restartGame
+            },
+    }
 }
 
 export default useGame;

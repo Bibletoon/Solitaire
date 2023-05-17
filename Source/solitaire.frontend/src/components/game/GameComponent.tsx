@@ -10,11 +10,11 @@ import ModalComponent from "../UI/ModalComponent";
 
 
 const GameComponent = () => {
-    const {game, gameEnded, movesCount, seconds, minutes, hours, canMoveCard, moveCard, showDeckCard, newGame, restartGame} = useGame();
+    const gameInfo = useGame();
 
     return (
         <Container>
-            { gameEnded &&
+            { gameInfo.gameEnded &&
                 <div>
                     <Fireworks
                         options={{
@@ -33,16 +33,26 @@ const GameComponent = () => {
                             zIndex: 111
                         }}
                     />
-                    <ModalComponent open={gameEnded}>
+                    <ModalComponent open={gameInfo.gameEnded}>
                             <Typography align="center" variant={"h5"}>Ура, победа!</Typography>
                                 <Button fullWidth={true} onClick={async () => {
-                                    newGame();
+                                    gameInfo.actions.newGame();
                                 }} variant="contained">Новая игра</Button>
                     </ModalComponent>
                 </div>
             }
-            <BoardComponent game={game} canMoveCard={canMoveCard} moveCard={moveCard} showDeckCard={showDeckCard}/>
-            <GameInfoComponent seconds={seconds} minutes={minutes} hours={hours} movesCount={movesCount} newGame={newGame} restartGame={restartGame}/>
+            <BoardComponent
+                game={gameInfo.game}
+                canMoveCard={gameInfo.actions.canMoveCard}
+                moveCard={gameInfo.actions.moveCard}
+                showDeckCard={gameInfo.actions.showDeckCard}/>
+            <GameInfoComponent
+                seconds={gameInfo.timer.seconds}
+                minutes={gameInfo.timer.minutes}
+                hours={gameInfo.timer.hours}
+                movesCount={gameInfo.movesCount}
+                newGame={gameInfo.actions.newGame}
+                restartGame={gameInfo.actions.restartGame}/>
         </Container>
     );
 };
