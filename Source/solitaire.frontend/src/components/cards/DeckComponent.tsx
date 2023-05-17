@@ -4,7 +4,7 @@ import Card from "../../models/Card";
 import PlacementType from "../../models/PlacementType";
 import styled from "styled-components";
 
-const Deck = styled.div`
+const DeckContainer = styled.div`
   display: flex;
   flex-direction: row;
 `;
@@ -17,10 +17,10 @@ type DeckComponentProps = {
 
 const DeckComponent : FC<DeckComponentProps> = ({hidden, shown, showDeckCard}) => {
     return (
-        <Deck>
+        <DeckContainer>
             <CardGroupComponent placement={PlacementType.Deck} x={0} deck={hidden} onClick={showDeckCard}/>
             <CardGroupComponent placement={PlacementType.Deck} x={1} deck={shown} hidden={false}/>
-        </Deck>
+        </DeckContainer>
     );
 };
 

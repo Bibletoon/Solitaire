@@ -9,7 +9,7 @@ import {HTML5toTouch} from "rdndmb-html5-to-touch";
 import {DndProvider} from "react-dnd";
 import styled from "styled-components";
 
-const Board = styled.div`
+const BoardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,7 +52,7 @@ type BoardComponentProps = {
 const BoardComponent : FC<BoardComponentProps> = ({game, canMoveCard, moveCard, showDeckCard}) => {
 
     return (
-        <Board>
+        <BoardContainer>
             <DndProvider backend={MultiBackend} options={HTML5toTouch}>
                 <BoardRow>
                     <DeckComponent showDeckCard={showDeckCard} hidden={game.deck.hidden} shown={game.deck.shown}/>
@@ -71,7 +71,7 @@ const BoardComponent : FC<BoardComponentProps> = ({game, canMoveCard, moveCard, 
                     }
                 </BoardLayout>
             </DndProvider>
-        </Board>
+        </BoardContainer>
     );
 };
 

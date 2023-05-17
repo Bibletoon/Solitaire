@@ -3,7 +3,7 @@ import {Button, Typography} from "@mui/material";
 import styled from "styled-components";
 import ModalComponent from "../UI/ModalComponent";
 
-const GameInfo = styled.div`
+const GameInfoContainer = styled.div`
   background-color: #f9f9f9;
   width: 100%;
   display: flex;
@@ -60,7 +60,7 @@ const GameInfoComponent : FC<GameInfoComponentProps> = ({seconds, minutes, hours
     const bestTimeString = bestTime ? Math.floor(parseInt(bestTime) / 3600) + ":" + Math.floor((parseInt(bestTime) % 3600) / 60) + ":" + (parseInt(bestTime) % 3600) % 60 : "Нет";
 
     return (
-        <GameInfo>
+        <GameInfoContainer>
             <ModalComponent open={modalIsOpen} onClose={() => setOpen(false)}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         Правила пасьянса «Косынка»
@@ -90,7 +90,7 @@ const GameInfoComponent : FC<GameInfoComponentProps> = ({seconds, minutes, hours
                 <Button onClick={newGame} variant="contained">Новая игра</Button>
                 <Button variant="contained" onClick={() => setOpen(true)}>Правила</Button>
             </GameInfoButtons>
-        </GameInfo>
+        </GameInfoContainer>
     );
 };
 

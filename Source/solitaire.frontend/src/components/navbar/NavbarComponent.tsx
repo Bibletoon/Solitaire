@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {AccountCircle} from "@mui/icons-material";
 import styled from "styled-components";
 
-const NavbarBlock = styled.nav`
+const NavbarContainer = styled.nav`
   max-width: 100%;
   display: flex;
   justify-content: space-between;
@@ -44,7 +44,7 @@ const NavbarProfile = styled.a`
 
 const NavbarComponent : FC = () => {
     return (
-        <NavbarBlock>
+        <NavbarContainer>
             <NavbarBrand>
                 <NavbarIcon src="https://cdn-icons-png.flaticon.com/512/8037/8037108.png" alt=""/>
                 <NavbarTitle>Solitaire</NavbarTitle>
@@ -53,7 +53,7 @@ const NavbarComponent : FC = () => {
                 <AccountCircle fontSize="large"/>
                 <span>Bibletoon</span>
             </NavbarProfile>
-        </NavbarBlock>
+        </NavbarContainer>
     );
 };
 

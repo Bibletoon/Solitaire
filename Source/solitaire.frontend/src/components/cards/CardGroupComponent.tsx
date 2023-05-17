@@ -5,7 +5,7 @@ import PlacementType from "../../models/PlacementType";
 import Card from "../../models/Card";
 import styled from "styled-components";
 
-const Deck = styled.div`
+const DeckBlock = styled.div`
   position: relative;
 `;
 
@@ -19,14 +19,14 @@ type DeckComponentProps = {
 
 const CardGroupComponent : FC<DeckComponentProps> = ({deck, x, placement, hidden, onClick}) => {
     return (
-        <Deck onClick={onClick}>
+        <DeckBlock onClick={onClick}>
             {deck.map((c, y) =>
                 y === deck.length-1
                     ? <CardComponent key={y} position={{x, y, placement}} card={deck[y]} hidden={hidden} canDrag={!hidden}/>
                     : <CardComponent key={y} invisible={true} position={{x, y, placement}} card={deck[y]} hidden={true} canDrag={!hidden}/>
             )}
             {!deck[0] && <EmptyCardComponent/>}
-        </Deck>
+        </DeckBlock>
     );
 };
 
