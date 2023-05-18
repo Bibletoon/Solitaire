@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import CardStackComponent from "../cards/CardStackComponent";
-import styles from "./BoardComponent.module.css"
 import FoundationComponent from "../cards/FoundationComponent";
 import DeckComponent from "../cards/DeckComponent";
 import SolitaireGame from "../../models/SolitaireGame";
@@ -8,6 +7,40 @@ import {CanMoveCardFunction, MoveCardFunction} from "../../models/MoveCardFuncti
 import {MultiBackend} from "react-dnd-multi-backend";
 import {HTML5toTouch} from "rdndmb-html5-to-touch";
 import {DndProvider} from "react-dnd";
+import styled from "styled-components";
+
+const BoardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 375px;
+
+  @media (min-width: 635px) {
+      width: 620px;
+  }
+
+  @media (min-width:1300px) {
+      width: 770px;
+  }
+`
+
+const BoardRow = styled.div`
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+`
+
+const BoardFoundations = styled.div`
+  display: flex;
+  flex-direction: row;
+  
+`
+
+const BoardLayout = styled.div`
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+`;
 
 type BoardComponentProps = {
     game : SolitaireGame,
@@ -19,26 +52,26 @@ type BoardComponentProps = {
 const BoardComponent : FC<BoardComponentProps> = ({game, canMoveCard, moveCard, showDeckCard}) => {
 
     return (
-        <div className={styles.board}>
+        <BoardContainer>
             <DndProvider backend={MultiBackend} options={HTML5toTouch}>
-                <div className={[styles.board__row, "row"].join(" ")}>
+                <BoardRow>
                     <DeckComponent showDeckCard={showDeckCard} hidden={game.deck.hidden} shown={game.deck.shown}/>
-                    <div className={[styles.board__foundations, "row"].join(" ")}>
+                    <BoardFoundations>
                         {
                             game.foundations.map((f, x) =>
                                 <FoundationComponent key={x} x={x} canMoveCard={canMoveCard} moveCard={moveCard} deck={f}/>
                             )}
-                    </div>
-                </div>
-                <div className={[styles.board__layout, "row"].join(" ")}>
+                    </BoardFoundations>
+                </BoardRow>
+                <BoardLayout>
                     {
                         game.layout.map((f, x) =>
                             <CardStackComponent key={x} x={x} canMoveCard={canMoveCard} moveCard={moveCard} cards={f}/>
                         )
                     }
-                </div>
+                </BoardLayout>
             </DndProvider>
-        </div>
+        </BoardContainer>
     );
 };
 

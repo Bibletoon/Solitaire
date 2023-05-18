@@ -1,7 +1,36 @@
 import React, {FC, useState} from 'react';
-import styles from "./GameInfoComponent.module.css";
-import {Box, Button, Modal, Typography} from "@mui/material";
-import stylesModal from "../ModalComponent.module.css";
+import {Button, Typography} from "@mui/material";
+import styled from "styled-components";
+import ModalComponent from "../UI/ModalComponent";
+
+const GameInfoContainer = styled.div`
+  background-color: #f9f9f9;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 18px;
+  margin-bottom: 5px;
+  height: 1%;
+
+  @media (min-width: 635px) {
+    font-size: 22px;
+  }
+
+  * {
+    margin: 5px;
+  }
+`;
+
+const GameInfoButtons = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  button {
+    margin-bottom: 5px;
+  }
+`;
+
 
 type GameInfoComponentProps = {
     seconds : number,
@@ -31,9 +60,8 @@ const GameInfoComponent : FC<GameInfoComponentProps> = ({seconds, minutes, hours
     const bestTimeString = bestTime ? Math.floor(parseInt(bestTime) / 3600) + ":" + Math.floor((parseInt(bestTime) % 3600) / 60) + ":" + (parseInt(bestTime) % 3600) % 60 : "Нет";
 
     return (
-        <div className={styles.gameInfo}>
-            <Modal open={modalIsOpen} onClose={() => setOpen(false)}>
-                <Box sx={modalStyle} className={stylesModal.modal}>
+        <GameInfoContainer>
+            <ModalComponent open={modalIsOpen} onClose={() => setOpen(false)}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         Правила пасьянса «Косынка»
                     </Typography>
@@ -50,20 +78,19 @@ const GameInfoComponent : FC<GameInfoComponentProps> = ({seconds, minutes, hours
                         <br/>
                         <Typography component={"span"} variant="body1">Всего мастей представлено четыре: черви, крести, пики, буби.</Typography>
                     </Typography>
-                </Box>
-            </Modal>
-            <div className={styles.gameInfo__stats}>
-                <div className={styles.gameInfo__item}>Время: {hours}:{minutes}:{seconds}</div>
-                <div className={styles.gameInfo__item}>Ходы: {movesCount}</div>
-                <div className={styles.gameInfo__item}>Лучший счёт: {bestScore || "Нет"}</div>
-                <div className={styles.gameInfo__item}>Лучшее время: {bestTimeString}</div>
+            </ModalComponent>
+            <div>
+                <div>Время: {hours}:{minutes}:{seconds}</div>
+                <div>Ходы: {movesCount}</div>
+                <div>Лучший счёт: {bestScore || "Нет"}</div>
+                <div>Лучшее время: {bestTimeString}</div>
             </div>
-            <div className={styles.gameInfo__buttons}>
+            <GameInfoButtons>
                 <Button onClick={restartGame} variant="contained">Начать сначала</Button>
                 <Button onClick={newGame} variant="contained">Новая игра</Button>
                 <Button variant="contained" onClick={() => setOpen(true)}>Правила</Button>
-            </div>
-        </div>
+            </GameInfoButtons>
+        </GameInfoContainer>
     );
 };
 
