@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Solitaire/static/css/main.a240c550.css",
+    "main.js": "/Solitaire/static/js/main.9168b2fb.js",
+    "index.html": "/Solitaire/index.html",
+    "main.a240c550.css.map": "/Solitaire/static/css/main.a240c550.css.map",
+    "main.9168b2fb.js.map": "/Solitaire/static/js/main.9168b2fb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a240c550.css",
+    "static/js/main.9168b2fb.js"
+  ]
+}
