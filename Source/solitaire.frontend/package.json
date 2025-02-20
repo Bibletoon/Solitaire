@@ -1,7 +1,7 @@
 {
   "name": "solitaire.frontend",
   "version": "0.1.0",
-  "homepage": "./",
+  "homepage": "https://bibletoon.github.io/Solitaire/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -34,7 +34,9 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "eject": "react-app-rewired eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -53,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
